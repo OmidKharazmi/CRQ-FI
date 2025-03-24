@@ -36,16 +36,6 @@ def JCF_divergence(f0, f1, F0_bar, F1_bar, q, num_points=1000, epsrel=1e-4, epsa
 
 # Function to calculate JCF divergence between two images
 def jcf_divergence_images(img1, img2, q_param=0.5):
-    p = img1.flatten()
-    q = img2.flatten()
-
-    sorted_p, sf_p = empirical_survival_function(p)
-    sorted_q, sf_q = empirical_survival_function(q)
-
-    # Interpolation for survival function
-    sf_p_kde = lambda x: np.interp(x, sorted_p, sf_p)
-    sf_q_kde = lambda x: np.interp(x, sorted_q, sf_q)
-
     return JCF_divergence(p, q, sf_p_kde, sf_q_kde, q_param)
 
 # Function to calculate PSNR between two images
