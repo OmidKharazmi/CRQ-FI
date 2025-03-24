@@ -82,34 +82,4 @@ def main():
         psnr_values.append(psnr_value)
         print(f"Adjusted Image {i}: {psnr_value} dB")
 
-    # Plot histograms of pixel values
-    print("\nPlotting histograms...")
-    labels = ["X", "Y", "Z", "W"]
-    for i in range(0, len(img_list), 4):
-        fig, axs = plt.subplots(2, 2, figsize=(8, 8))
-        plt.subplots_adjust(hspace=0.5)
 
-        for j, (adjusted_img, ax) in enumerate(zip(img_list[i:i + 4], axs.flatten())):
-            ax.hist(adjusted_img.flatten(), bins=256, color='blue', alpha=0.5, density=True)
-            ax.set_xlabel('Pixel Value', fontsize=8)
-            ax.set_ylabel('Density', fontsize=8)
-            ax.set_title(f'{labels[j]}', fontsize=7, loc='left', y=0.9, x=0.02)
-
-        plt.tight_layout()
-        plt.show()
-
-        # Display images
-        fig, axs = plt.subplots(2, 2, figsize=(12, 12))
-        plt.subplots_adjust(hspace=0.5)
-
-        for j, (adjusted_img, ax) in enumerate(zip(img_list[i:i + 4], axs.flatten())):
-            ax.imshow(adjusted_img, cmap='gray')
-            ax.axis('off')
-            ax.set_title(f'{labels[j]}', fontsize=10)
-
-        plt.tight_layout()
-        plt.show()
-
-# Call the main function to execute the program
-if __name__ == "__main__":
-    main()
