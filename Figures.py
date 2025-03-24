@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load the original image in grayscale
-img_original = cv2.imread("C:/Users/FARHANG/Desktop/image/lake.png", cv2.IMREAD_GRAYSCALE)
+img_original = cv2.imread("C:/Users/Omid/Desktop/image/lake.png", cv2.IMREAD_GRAYSCALE)
 
 # Create a list of adjusted images
 img_list = [
