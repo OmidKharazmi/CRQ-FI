@@ -21,7 +21,7 @@ def JCF_divergence(f0, f1, F0_bar, F1_bar, q, num_points=1000, epsrel=1e-4, epsa
     # Define the integrands for the divergence calculation
     integrand1 = lambda x: (f0_kde(x) ** 2) * (F0_bar(x) ** (2 * q - 1))
     integrand2 = lambda x: (f1_kde(x) ** 2) * (F1_bar(x) ** (2 * q - 1))
-    integrand3 = lambda x: (f_mix) ** 2 * (Fmix_bar(x)) ** (2 
+    integrand3 = lambda x: (f_mix) ** 2 * (Fmix_bar(x)) ** (2 * q - 1))
 
     # Integrate the terms
     min_val, max_val = min(np.min(f0), np.min(f1)), max(np.max(f0), np.max(f1))
