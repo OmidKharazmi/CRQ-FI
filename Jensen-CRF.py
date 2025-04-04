@@ -12,23 +12,6 @@ def empirical_survival_function(data):
     survival_function = 1.0 - np.arange(1, n + 1) / n
     return sorted_data, survival_function
 
-# JCF divergence
-def JCF_divergence(f0, f1, F0_bar, F1_bar, q, num_points=1000, epsrel=1e-4, epsabs=1e-4):
-    bandwidth = 0.5  # Adjust bandwidth as needed
-    f0_kde = gaussian_kde(f0, bw_method=bandwidth)
-    f1_kde = gaussian_kde(f1, bw_method=bandwidth)
-
-    # Define the integrands for the divergence calculation
-    integrand1 = lambda x: (f0_kde(x) ** 2) * (F0_bar(x) ** (2 * q - 1))
-    integrand2 = lambda x: (f1_kde(x) ** 2) * (F1_bar(x) ** (2 * q - 1))
-    integrand3 = lambda x: (f_mix) ** 2 * (Fmix_bar(x)) ** (2 * q - 1))
-
-    # Integrate the terms
-    min_val, max_val = min(np.min(f0), np.min(f1)), max(np.max(f0), np.max(f1))
-    term1, _ = int(integrand1, min_val, max_val, epsrel=epsrel, epsabs=epsabs)
-    term2, _ = int(integrand2, min_val, max_val, epsrel=epsrel, epsabs=epsabs)
-    term3, _ = int(integrand3, min_val, max_val, epsrel=epsrel, epsabs=epsabs)
-
     # Calculate the JCF divergence
     jcf_div = alpha * term1 + (1-alpha) * term2 - term3
 
